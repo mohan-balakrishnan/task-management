@@ -58,7 +58,6 @@ public class SpecificationBuilder {
     @SuppressWarnings("unchecked")
     private static <T> Path<T> getPath(Path<?> root, String field) {
         Path<?> current = root;
-        // FIXED: Proper string splitting without regex escape issues
         String[] parts = field.contains(".") ? field.split("[.]") : new String[]{field};
         for (String part : parts) {
             current = current.get(part);

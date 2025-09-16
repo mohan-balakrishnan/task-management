@@ -1,7 +1,8 @@
 {
   "info": {
-    "name": "Task Management API - Fixed",
-    "version": "1.0.0"
+    "name": "Task Management API",
+    "version": "1.0.0",
+    "description": "API endpoints for Task Management System"
   },
   "item": [
     {
@@ -9,7 +10,8 @@
       "request": {
         "method": "GET",
         "header": [],
-        "url": "{{base_url}}/actuator/health"
+        "url": "{{base_url}}/actuator/health",
+        "description": "Check if the backend service is running"
       }
     }
   ],
