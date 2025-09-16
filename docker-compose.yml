@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   mysql:
     image: mysql:8.0
@@ -6,8 +7,6 @@ services:
     environment:
       MYSQL_DATABASE: taskmanager
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_USER: taskuser
-      MYSQL_PASSWORD: taskpass
     ports:
       - "3306:3306"
     volumes:

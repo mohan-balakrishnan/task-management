@@ -1,58 +1,20 @@
 spring:
   application:
     name: taskmanager
-
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/taskmanager?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/taskmanager?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true}
     username: ${SPRING_DATASOURCE_USERNAME:root}
     password: ${SPRING_DATASOURCE_PASSWORD:rootpassword}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
     hibernate:
-      ddl-auto: update
-    show-sql: false
-    properties:
-      hibernate:
-        format_sql: true
-        jdbc:
-          time_zone: UTC
-        dialect: org.hibernate.dialect.MySQL8Dialect
-    open-in-view: false
-
-  jackson:
-    serialization:
-      write-dates-as-timestamps: false
-    time-zone: UTC
-
-  security:
-    user:
-      name: admin
-      password: admin123
-      roles: ADMIN
-
+      ddl-auto: create-drop
+    show-sql: true
 server:
   port: 8080
-  servlet:
-    context-path: /api
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics
-  endpoint:
-    health:
-      show-details: when-authorized
-
 jwt:
   secret: ${JWT_SECRET:task-manager-jwt-secret-key-minimum-32-characters-long}
   expirationMs: 3600000
   refreshExpirationMs: 604800000
-
 logging:
   level:
     com.example.taskmanager: DEBUG
-    org.springframework.security: DEBUG
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
