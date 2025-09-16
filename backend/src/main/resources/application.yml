@@ -14,7 +14,6 @@ server:
 jwt:
   secret: ${JWT_SECRET:task-manager-jwt-secret-key-minimum-32-characters-long}
   expirationMs: 3600000
-  refreshExpirationMs: 604800000
 logging:
   level:
     com.example.taskmanager: DEBUG

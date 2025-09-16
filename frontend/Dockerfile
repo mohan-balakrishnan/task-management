@@ -1,14 +1,17 @@
 FROM node:18-alpine as build
 WORKDIR /app
 
-# Copy package files
+# Copy only package files first
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install --legacy-peer-deps
 
-# Copy source code
-COPY . .
+# Copy ONLY source files (not problematic files)
+COPY index.html ./
+COPY vite.config.ts ./
+COPY tsconfig*.json ./
+COPY src/ ./src/
 
 # Build the application
 RUN npm run build
