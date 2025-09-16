@@ -8,12 +8,16 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
-    show-sql: true
+    show-sql: false
 server:
   port: 8080
-jwt:
-  secret: ${JWT_SECRET:task-manager-jwt-secret-key-minimum-32-characters-long}
-  expirationMs: 3600000
+  servlet:
+    context-path: /
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
 logging:
   level:
-    com.example.taskmanager: DEBUG
+    com.example.taskmanager: INFO
