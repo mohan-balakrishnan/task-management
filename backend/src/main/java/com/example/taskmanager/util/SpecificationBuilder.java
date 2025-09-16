@@ -58,7 +58,9 @@ public class SpecificationBuilder {
     @SuppressWarnings("unchecked")
     private static <T> Path<T> getPath(Path<?> root, String field) {
         Path<?> current = root;
-        for (String part : field.split("\.")) {
+        // Fixed: Use proper string splitting instead of regex
+        String[] parts = field.split("[.]");
+        for (String part : parts) {
             current = current.get(part);
         }
         return (Path<T>) current;
